@@ -16,7 +16,7 @@ final readonly class AuthorizationCodeManager implements AuthorizationCodeManage
         private ?\DateInterval $expireCleanupDelay = null,
     ) {
         if (null === $expireCleanupDelay) {
-            trigger_deprecation('league/oauth2-server-bundle', '2.0', 'Not passing a "%s" to "%s" is deprecated since version 2.0 and will be required in 3.0.', \DateInterval::class, self::class);
+            trigger_deprecation('league/oauth2-server-bundle', '2.1', 'Not passing a "%s" to "%s" is deprecated since version 2.1 and will be required in 3.0.', \DateInterval::class, self::class);
         }
     }
 
