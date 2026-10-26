@@ -125,7 +125,8 @@ For implementation into Symfony projects, please see [bundle documentation](basi
                 # Table name prefix.
                 table_prefix:         oauth2_
 
-                # The delay in seconds in which expired access/refresh/authorization-code/device-code will be removed (default 0)
+                # How long expired access tokens, refresh tokens, authorization codes and device codes are kept before they are removed.
+                # Must be an ISO 8601 interval notation, e.g. PT1H or P7D. Default PT0S (removed as soon as they expire).
                 expired_token_cleanup_delay: PT0S
 
             in_memory:            ~

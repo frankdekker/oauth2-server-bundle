@@ -241,8 +241,24 @@ final class Configuration implements ConfigurationInterface
                             ->defaultValue('oauth2_')
                         ->end()
                         ->scalarNode('expired_token_cleanup_delay')
-                            ->info('The delay in seconds in which expired access/refresh/authorization-code/device-code will be removed. Default PT0S.')
+                            ->info("How long expired access tokens, refresh tokens, authorization codes and device codes are kept before they are removed.\nMust be an ISO 8601 interval notation, e.g. PT1H or P7D. Default PT0S.")
                             ->defaultValue('PT0S')
+                            ->validate()
+                                ->ifTrue(static function ($v): bool {
+                                    if (!\is_string($v)) {
+                                        return true;
+                                    }
+
+                                    try {
+                                        new \DateInterval($v);
+                                    } catch (\Exception) {
+                                        return true;
+                                    }
+
+                                    return false;
+                                })
+                                ->thenInvalid('%s is not a valid ISO 8601 interval notation, e.g. "PT1H".')
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
