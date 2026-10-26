@@ -22,7 +22,7 @@ final class DoctrineRefreshTokenManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineRefreshTokenManager = new DoctrineRefreshTokenManager($em, 'PT0S');
+        $doctrineRefreshTokenManager = new DoctrineRefreshTokenManager($em, new \DateInterval('PT0S'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -51,7 +51,7 @@ final class DoctrineRefreshTokenManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineRefreshTokenManager = new DoctrineRefreshTokenManager($em, 'PT1H');
+        $doctrineRefreshTokenManager = new DoctrineRefreshTokenManager($em, new \DateInterval('PT1H'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);

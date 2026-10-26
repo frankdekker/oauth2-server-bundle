@@ -22,7 +22,7 @@ final class DoctrineAccessTokenManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, 'PT0S');
+        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, new \DateInterval('PT0S'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -48,7 +48,7 @@ final class DoctrineAccessTokenManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, 'PT1H');
+        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, new \DateInterval('PT1H'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -73,7 +73,7 @@ final class DoctrineAccessTokenManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, false, 'PT0S');
+        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, false, new \DateInterval('PT0S'));
 
         $client = new Client('name', 'client', 'secret');
         $em->persist($client);
@@ -130,7 +130,7 @@ final class DoctrineAccessTokenManagerTest extends AbstractAcceptanceTestCase
     {
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
-        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, 'PT0S');
+        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, true, new \DateInterval('PT0S'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -157,7 +157,7 @@ final class DoctrineAccessTokenManagerTest extends AbstractAcceptanceTestCase
     {
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
-        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, false, 'PT0S');
+        $doctrineAccessTokenManager = new DoctrineAccessTokenManager($em, false, new \DateInterval('PT0S'));
 
         $client = new Client('name', 'client', 'secret');
         $em->persist($client);

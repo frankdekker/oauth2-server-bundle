@@ -15,7 +15,7 @@ final readonly class AccessTokenManager implements AccessTokenManagerInterface
     public function __construct(
         private EntityManagerInterface $entityManager,
         private bool $persistAccessToken,
-        private readonly string $expireCleanupDelay,
+        private ?\DateInterval $expireCleanupDelay = null,
     ) {
     }
 
@@ -44,7 +44,10 @@ final readonly class AccessTokenManager implements AccessTokenManagerInterface
             return 0;
         }
 
-        $expiry = (new \DateTimeImmutable())->sub(new \DateInterval($this->expireCleanupDelay));
+        $expiry = new \DateTimeImmutable();
+        if (null !== $this->expireCleanupDelay) {
+            $expiry = $expiry->sub($this->expireCleanupDelay);
+        }
 
         /** @var array{identifier: string}[] */
         $results = $this->entityManager->createQueryBuilder()

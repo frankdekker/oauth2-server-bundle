@@ -21,7 +21,7 @@ final class DoctrineAuthCodeManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineAuthCodeManager = new DoctrineAuthCodeManager($em, 'PT0S');
+        $doctrineAuthCodeManager = new DoctrineAuthCodeManager($em, new \DateInterval('PT0S'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -48,7 +48,7 @@ final class DoctrineAuthCodeManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineAuthCodeManager = new DoctrineAuthCodeManager($em, 'PT1H');
+        $doctrineAuthCodeManager = new DoctrineAuthCodeManager($em, new \DateInterval('PT1H'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);

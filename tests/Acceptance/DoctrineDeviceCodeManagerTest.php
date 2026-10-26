@@ -21,7 +21,7 @@ final class DoctrineDeviceCodeManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineDeviceCodeManager = new DoctrineDeviceCodeManager($em, 'PT0S');
+        $doctrineDeviceCodeManager = new DoctrineDeviceCodeManager($em, new \DateInterval('PT0S'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);
@@ -48,7 +48,7 @@ final class DoctrineDeviceCodeManagerTest extends AbstractAcceptanceTestCase
         /** @var EntityManagerInterface $em */
         $em = $this->client->getContainer()->get('doctrine.orm.entity_manager');
 
-        $doctrineDeviceCodeManager = new DoctrineDeviceCodeManager($em, 'PT1H');
+        $doctrineDeviceCodeManager = new DoctrineDeviceCodeManager($em, new \DateInterval('PT1H'));
 
         $client = new Client('client', 'client', 'secret');
         $em->persist($client);

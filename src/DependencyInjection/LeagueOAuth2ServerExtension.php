@@ -328,7 +328,7 @@ final class LeagueOAuth2ServerExtension extends Extension implements PrependExte
     private function configureDoctrinePersistence(ContainerBuilder $container, array $config, array $persistenceConfig): void
     {
         $entityManagerName = $persistenceConfig['entity_manager'];
-        $expiredTokenCleanupDelay = $persistenceConfig['expired_token_cleanup_delay'];
+        $expiredTokenCleanupDelay = new Definition(\DateInterval::class, [$persistenceConfig['expired_token_cleanup_delay']]);
 
         $entityManager = new Reference(
             \sprintf('doctrine.orm.%s_entity_manager', $entityManagerName)
