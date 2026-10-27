@@ -47,10 +47,7 @@ final readonly class AccessTokenManager implements AccessTokenManagerInterface
             return 0;
         }
 
-        $expiry = new \DateTimeImmutable();
-        if (null !== $this->expireCleanupDelay) {
-            $expiry = $expiry->sub($this->expireCleanupDelay);
-        }
+        $expiry = (new \DateTimeImmutable())->sub($this->expireCleanupDelay ?? new \DateInterval('PT0S'));
 
         /** @var array{identifier: string}[] */
         $results = $this->entityManager->createQueryBuilder()

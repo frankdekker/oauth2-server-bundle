@@ -20,5 +20,4 @@ FROM 1.2 to 2.0
 
 FROM 2.0 to 2.1
 ---------------
-
- * Require `DateInterval $expireCleanupDelay` argument in `AccessTokenManager`, `AuthorizationCodeManager`, `DeviceCodeManager` and `RefreshTokenManager`
+ * Deprecate not passing a `DateInterval` instance to the `$expireCleanupDelay` argument of `Doctrine\AccessTokenManager`, `Doctrine\AuthorizationCodeManager`, `Doctrine\DeviceCodeManager` and `Doctrine\RefreshTokenManager` constructors
